@@ -165,8 +165,14 @@ int vinst = 0;
    
         });
     }
-
+    
+    
+    private int pengar = 0, bet = 15, win, lost;
+    private double payout = 25.0, funds;
+    private int rad = 7, rad2 = 7, rad3 = 7; //start värden för raderna.
+    private ArrayList<ImageIcon> images = new ArrayList<ImageIcon>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
+
     private java.awt.Choice Bet;
     private java.awt.TextField Lastwin;
     private java.awt.Label Lb1;
