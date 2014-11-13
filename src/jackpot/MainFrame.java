@@ -5,7 +5,11 @@ import javax.swing.*;
 import java.util.Random;
 import javax.swing.border.*;
 public class MainFrame extends javax.swing.JFrame {
-    public MainFrame(int pengar, int insattapengar,int bet) {
+    //gör en array av alla symboler som ska användas.
+   private ArrayList<ImageIcon> images = new ArrayList<ImageIcon>();
+   private int pengar = 100, insattapengar = 100, bet = 15, matchThree, matchTwo, win, lost, lastwin = 0;
+   private int rad1 = 0, rad2 =0, rad3 = 0; 
+    public MainFrame(int pengar, int insattapengar,int bet, int rad1, int rad2, int rad3) {
         initComponents();
         this.insattapengar = insattapengar;
         this.pengar=pengar;
@@ -14,6 +18,9 @@ public class MainFrame extends javax.swing.JFrame {
         this.setTitle("Jontes SLOT MACHINE");
         this.setResizable(false);
         this.setVisible(true);
+        this.rad1=rad1;
+        this.rad2=rad2;
+        this.rad3=rad3;
         Skaparuta();
     }
     public MainFrame(){
@@ -23,6 +30,7 @@ public class MainFrame extends javax.swing.JFrame {
      // Skapar rutan
     private void Skaparuta() {
         JFrame f = new JFrame();
+        f.setBounds(500, 500, 500, 500);
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         f.setTitle("Jontes SLOT MACHINE");
         f.setResizable(false);
@@ -30,15 +38,15 @@ public class MainFrame extends javax.swing.JFrame {
         JPanel pnlReels = new JPanel();
         pnlReels.setBorder(BorderFactory.createEtchedBorder());
         
-        JPanel pnlReel1 = new JPanel();
-        pnlReel1.setBackground(new Color(255, 215, 0));
-        pnlReel1.setBorder(new SoftBevelBorder(BevelBorder.LOWERED));
-        JPanel pnlReel2 = new JPanel();
-        pnlReel2.setBackground(new Color(255, 216, 0));
-        pnlReel2.setBorder(new SoftBevelBorder(BevelBorder.LOWERED));
-        JPanel pnlReel3 = new JPanel();
-        pnlReel3.setBackground(new java.awt.Color(255, 215, 0));
-        pnlReel3.setBorder(new SoftBevelBorder(BevelBorder.LOWERED));
+        JPanel pnlRad1 = new JPanel();
+        pnlRad1.setBackground(new Color(255, 215, 0));
+        pnlRad1.setBorder(new SoftBevelBorder(BevelBorder.LOWERED));
+        JPanel pnlRad2 = new JPanel();
+        pnlRad2.setBackground(new Color(255, 216, 0));
+        pnlRad2.setBorder(new SoftBevelBorder(BevelBorder.LOWERED));
+        JPanel pnlRad3 = new JPanel();
+        pnlRad3.setBackground(new java.awt.Color(255, 215, 0));
+        pnlRad3.setBorder(new SoftBevelBorder(BevelBorder.LOWERED));
     }
    
 
@@ -55,9 +63,11 @@ public class MainFrame extends javax.swing.JFrame {
         jRadioButton3 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(0, 0, 500, 450));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setMaximumSize(new java.awt.Dimension(500, 450));
 
         Exit.setActionCommand("Exit");
         Exit.setBackground(new java.awt.Color(200, 200, 200));
@@ -102,7 +112,7 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(162, Short.MAX_VALUE)
+                .addContainerGap(80, Short.MAX_VALUE)
                 .addComponent(jRadioButton1)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +156,7 @@ public class MainFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(422, Short.MAX_VALUE)
+                .addContainerGap(300, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -164,6 +174,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         jRadioButton1.setSelected(true);
+        jRadioButton1.setText("2k");
         bet = 2000;
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
@@ -222,8 +233,6 @@ public class MainFrame extends javax.swing.JFrame {
         });
     }
 
-   private ArrayList<ImageIcon> images = new ArrayList<ImageIcon>();
-   private int pengar = 100, insattapengar = 100, bet = 15, matchThree, matchTwo, win, lost, lastwin = 0;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button Exit;
