@@ -1,24 +1,46 @@
 package jackpot;
-import java.util.ArrayList;
 import java.awt.*;
+import java.util.ArrayList;
 import javax.swing.*;
 import java.util.Random;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.border.*;
 public class MainFrame extends javax.swing.JFrame {
-    private Object pnlrad1;
     public MainFrame(int pengar, int insattapengar,int bet) {
         initComponents();
         this.insattapengar = insattapengar;
+        this.pengar=pengar;
+        this.bet=bet;
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setTitle("Jontes SLOT MACHINE");
+        this.setResizable(false);
+        this.setVisible(true);
+        Skaparuta();
     }
-    private void Mainruta(){
-         JFrame f = new JFrame();
-         
+    public MainFrame(){
+        Skaparuta();
+        
     }
-
-    private MainFrame() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+     // Skapar rutan
+    private void Skaparuta() {
+        JFrame f = new JFrame();
+        f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        f.setTitle("Jontes SLOT MACHINE");
+        f.setResizable(false);
+        f.setVisible(true);
+        JPanel pnlReels = new JPanel();
+        pnlReels.setBorder(BorderFactory.createEtchedBorder());
+        
+        JPanel pnlReel1 = new JPanel();
+        pnlReel1.setBackground(new Color(255, 215, 0));
+        pnlReel1.setBorder(new SoftBevelBorder(BevelBorder.LOWERED));
+        JPanel pnlReel2 = new JPanel();
+        pnlReel2.setBackground(new Color(255, 216, 0));
+        pnlReel2.setBorder(new SoftBevelBorder(BevelBorder.LOWERED));
+        JPanel pnlReel3 = new JPanel();
+        pnlReel3.setBackground(new java.awt.Color(255, 215, 0));
+        pnlReel3.setBorder(new SoftBevelBorder(BevelBorder.LOWERED));
     }
+   
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -142,7 +164,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         jRadioButton1.setSelected(true);
-        
+        bet = 2000;
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
@@ -150,8 +172,24 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     int vinst = 2;//making a change test
-    public static void main(String args[]) {
-
+    public static void main(String args[]) 
+    {
+ 
+        
+        
+        
+        
+        
+        
+        
+        
+        try{
+            
+        }catch(Exception ex){
+            
+        }
+            
+   
         
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -176,9 +214,9 @@ public class MainFrame extends javax.swing.JFrame {
         //</editor-fold>
         java.awt.EventQueue.invokeLater(new Runnable() {
             
-            @Override
+
             public void run() {
-                new MainFrame().setVisible(true);
+                new MainFrame();
             }
    
         });
