@@ -133,7 +133,7 @@ public class MainFrame extends javax.swing.JFrame {
        
     }//GEN-LAST:event_SpinActionPerformed
 
-int vinst = 2;
+int vinst = 2;//making a change test
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
