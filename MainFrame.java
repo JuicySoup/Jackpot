@@ -132,8 +132,27 @@ public class MainFrame extends javax.swing.JFrame {
     private void SpinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SpinActionPerformed
        
     }//GEN-LAST:event_SpinActionPerformed
+    
+    
+    class SpinHandler implements ActionListener{
+    public void actionPerformed(Actionevent event) {
+	if (pengar < bet) {
+	   lblStatus.setText("<html><a href='http://www.gambleaware.co.uk/'>www.gableaware.co.uk</a></html>");
+  	   } else if ((pengar - bet) >= 0) 
+	   {
+	   pnlrad1.SetBackgronud(new java.awt.Color(255,215,0));
+	   pnlrad2.SetBackground(new java.awt.Color(255,215,0));
+	   pnlrad3.SetBackground(new java.awt.Color(255,215,0));
+	genradnummer();
+	matchcheck();
+	}else
+        {
+	lblStatus.setText("Bet är "+bet+"kr");
+   }
+   }
+}
 
-int vinst = 0;
+
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
