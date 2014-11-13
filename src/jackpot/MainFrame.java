@@ -133,7 +133,7 @@ public class MainFrame extends javax.swing.JFrame {
        
     }//GEN-LAST:event_SpinActionPerformed
 
-int vinst = 0;
+int vinst = 2;
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -165,6 +165,8 @@ int vinst = 0;
    
         });
     }
+    
+   private int pengar = 100, insattapengar = 100, bet = 15, matchThree, matchTwo, win, lost;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Choice Bet;
