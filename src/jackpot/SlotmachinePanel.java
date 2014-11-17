@@ -1,54 +1,78 @@
 package jackpot;
 import java.awt.*;
+import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
 import java.util.Random;
 import javax.swing.border.*;
-public class MainFrame extends javax.swing.JFrame {
+public class SlotmachinePanel extends javax.swing.JFrame {
     //gör en array av alla symboler som ska användas.
    private ArrayList<ImageIcon> images = new ArrayList<ImageIcon>();
-   private int pengar = 100, insattapengar = 100, bet = 15, matchThree, matchTwo, win, lost, lastwin = 0;
+   private int pengar = 100, insattapengar = 100, bet = 15, tripplar= 0, dubblar= 0, win= 0, lost= 0, lastwin = 0, spelningar;
    private int rad1 = 0, rad2 =0, rad3 = 0; 
-    public MainFrame(int pengar, int insattapengar,int bet, int rad1, int rad2, int rad3) {
-        initComponents();
-        this.insattapengar = insattapengar;
-        this.pengar=pengar;
-        this.bet=bet;
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.setTitle("Jontes SLOT MACHINE");
-        this.setResizable(false);
-        this.setVisible(true);
-        this.rad1=rad1;
-        this.rad2=rad2;
-        this.rad3=rad3;
-        Skaparuta();
-    }
-    public MainFrame(){
-        Skaparuta();
+   
+   private JButton spela;
+   
+   private JLabel instruktion;
+   private JLabel nummer1;
+   private JLabel nummer2;
+   private JLabel nummer3;
+   private JLabel antaldubblar;
+   private JLabel antaltripplar;
+   private JLabel antalspelningar;
+   private JLabel antalpengar;
+   
+   private JTextArea textArea = new JTextArea(5,20);
+   
+   public SlotmachinePanel(int pengar, int insattapengar,int bet, int rad1, int rad2, int rad3, int dubblar, int tripplar) {
+      instruktion = new JLabel ("Tryck START för att börja");
+      antalpengar = new JLabel ("Du har "+ antalpengar + " pengar att spela med.");
+      spela = new JButton("START");
+      spela.addActionListener (new ButtonListener());
+      
+        nummer1 = new JLabel(""+rad1);
+        nummer1.setFont ("Jonte", Font.BOLD, 40));
+        nummer2 = new JLabel(""+rad2);
+        nummer3 = new JLabel(""+rad3);
         
-    }
-     // Skapar rutan
-    private void Skaparuta() {
-        JFrame f = new JFrame();
-        f.setBounds(500, 500, 500, 500);
-        f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        f.setTitle("Jontes SLOT MACHINE");
-        f.setResizable(false);
-        f.setVisible(true);
-        JPanel pnlReels = new JPanel();
-        pnlReels.setBorder(BorderFactory.createEtchedBorder());
+        antaldubblar = new JLabel("Antal dubblar:" + dubblar);
+        antaltripplar = new JLabel("Antal tripplar:" + tripplar);
+        antalspelningar = new JLabel("Du har dragit i spaken " + spelningar+" ganger.");
         
-        JPanel pnlRad1 = new JPanel();
-        pnlRad1.setBackground(new Color(255, 215, 0));
-        pnlRad1.setBorder(new SoftBevelBorder(BevelBorder.LOWERED));
-        JPanel pnlRad2 = new JPanel();
-        pnlRad2.setBackground(new Color(255, 216, 0));
-        pnlRad2.setBorder(new SoftBevelBorder(BevelBorder.LOWERED));
-        JPanel pnlRad3 = new JPanel();
-        pnlRad3.setBackground(new java.awt.Color(255, 215, 0));
-        pnlRad3.setBorder(new SoftBevelBorder(BevelBorder.LOWERED));
+        add (instruktion);
+        add (antalpengar);
+        add (spela);
+        add (nummer1);
+        add (nummer2);
+        add (nummer3);
+        add (antaldubblar);
+        add (antaltripplar);
+        add (antalspelningar);
+        
+        setPreferredSize (new Dimension(300,150));
+        setBackground (Color.gray);
+        
     }
    
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+    SlotmachinePanel() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    public void gameover(){
+        textArea.setText("GAME OVER");
+    }
+     // Skapar rutan
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -214,20 +238,20 @@ public class MainFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SlotmachinePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SlotmachinePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SlotmachinePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SlotmachinePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         java.awt.EventQueue.invokeLater(new Runnable() {
             
 
             public void run() {
-                new MainFrame();
+                new SlotmachinePanel();
             }
    
         });
@@ -243,4 +267,23 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     // End of variables declaration//GEN-END:variables
+
+    private class ButtonListener implements ActionListener {
+       public void actionPerformed(ActionEvent event){
+           Random rand = new Random();
+           
+           rad1 = rand.nextInt(9)+1;
+           rad2 = rand.nextInt(9)+1;
+           rad3 = rand.nextInt(9)+1;
+           
+           nummer1.setText(""+rad1);
+           nummer2.setText(""+rad2);
+           nummer3.setText(""+rad3);
+           
+           
+           
+       }
+        public ButtonListener() {
+        }
+    }
 }
