@@ -1,13 +1,10 @@
 package jackpot;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import javax.swing.*;
 import java.util.Random;
-import javax.swing.border.*;
 public class SlotmachinePanel extends javax.swing.JFrame {
     //gör en array av alla symboler som ska användas.
-   private ArrayList<ImageIcon> images = new ArrayList<ImageIcon>();
    private int pengar = 100, insattapengar = 100, bet = 15, tripplar= 0, dubblar= 0, win= 0, lost= 0, lastwin = 0, spelningar;
    private int rad1 = 0, rad2 =0, rad3 = 0; 
    
@@ -30,10 +27,14 @@ public class SlotmachinePanel extends javax.swing.JFrame {
       spela = new JButton("START");
       spela.addActionListener (new ButtonListener());
       
+      //3 olika nummer 
+      
         nummer1 = new JLabel(""+rad1);
-        nummer1.setFont ("Jonte", Font.BOLD, 40));
+        nummer1.setFont (new Font("Jonte", Font.BOLD, 40));
         nummer2 = new JLabel(""+rad2);
+        nummer2.setFont (new Font("Jonte", Font.BOLD, 40));
         nummer3 = new JLabel(""+rad3);
+        nummer3.setFont (new Font("Jonte", Font.BOLD, 40));
         
         antaldubblar = new JLabel("Antal dubblar:" + dubblar);
         antaltripplar = new JLabel("Antal tripplar:" + tripplar);
@@ -52,6 +53,7 @@ public class SlotmachinePanel extends javax.swing.JFrame {
         setPreferredSize (new Dimension(300,150));
         setBackground (Color.gray);
         
+        
     }
    
    
@@ -59,10 +61,7 @@ public class SlotmachinePanel extends javax.swing.JFrame {
    
    
    
-   
-   
-   
-   
+  
    
    
 
@@ -72,7 +71,6 @@ public class SlotmachinePanel extends javax.swing.JFrame {
     public void gameover(){
         textArea.setText("GAME OVER");
     }
-     // Skapar rutan
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -206,31 +204,10 @@ public class SlotmachinePanel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
-    int vinst = 2;//making a change test
     public static void main(String args[]) 
     {
  
-        
-        
-        
-        
-        
-        
-        
-        
-        try{
-            
-        }catch(Exception ex){
-            
-        }
-            
-   
-        
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
+              try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -250,11 +227,44 @@ public class SlotmachinePanel extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             
 
+            @Override
             public void run() {
-                new SlotmachinePanel();
+                new SlotmachinePanel().setVisible(true);
             }
    
         });
+    }
+  private class ButtonListener implements ActionListener {
+       @Override
+       public void actionPerformed(ActionEvent event){
+           if (pengar<bet){
+               instruktion.setText("Spelberoende?");
+           }else if((pengar-bet)>=0){
+               
+               
+           }
+
+  
+           
+           
+           
+           
+        }
+       
+       public void Gennummer(){
+           Random rand = new Random();
+                         
+           rad1 = rand.nextInt(9)+1;
+           rad2 = rand.nextInt(9)+1;
+           rad3 = rand.nextInt(9)+1;
+           
+           nummer1.setText(""+rad1);
+           nummer2.setText(""+rad2);
+           nummer3.setText(""+rad3);
+           
+           
+           
+       }
     }
 
 
@@ -268,22 +278,4 @@ public class SlotmachinePanel extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton3;
     // End of variables declaration//GEN-END:variables
 
-    private class ButtonListener implements ActionListener {
-       public void actionPerformed(ActionEvent event){
-           Random rand = new Random();
-           
-           rad1 = rand.nextInt(9)+1;
-           rad2 = rand.nextInt(9)+1;
-           rad3 = rand.nextInt(9)+1;
-           
-           nummer1.setText(""+rad1);
-           nummer2.setText(""+rad2);
-           nummer3.setText(""+rad3);
-           
-           
-           
-       }
-        public ButtonListener() {
-        }
-    }
 }
